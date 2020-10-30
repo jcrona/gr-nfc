@@ -1,17 +1,17 @@
 /* -*- c++ -*- */
-/* 
- * Copyright 2017 Jean-Christophe Rona <jc@rona.fr>.
- * 
+/*
+ * Copyright 2020 Jcrona.
+ *
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3, or (at your option)
  * any later version.
- * 
+ *
  * This software is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this software; see the file COPYING.  If not, write to
  * the Free Software Foundation, Inc., 51 Franklin Street,
@@ -23,7 +23,7 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "modified_miller_decoder_impl.h"
+#include "nfc_impl.h"
 
 #define MILLER_PULSE_DURATION				2,5 // us
 #define MILLER_PULSE_WIDTH				((d_sample_rate/1000000) * MILLER_PULSE_DURATION)
@@ -42,12 +42,11 @@
 #define MILLER_GAP_SHORT_WIDTH_THRESHOLD		(MILLER_GAP_SHORT_WIDTH - MILLER_GAP_SHORT_WIDTH/8)
 
 /* Enable this to display the decoding process */
-//#define DEBUG
-
+#define DEBUG
 
 namespace gr {
-  namespace nfc {
-
+  namespace NFCByJcrona {
+    
     enum miller_state {
         WAIT_FOR_START,
         LAST_BIT_ZERO_OR_START,
@@ -61,18 +60,18 @@ namespace gr {
     static unsigned int decoded_bit_num = 0;
     static unsigned char current_frame[1000] = { 0 };
 
-    modified_miller_decoder::sptr
-    modified_miller_decoder::make(double sample_rate)
+	nfc::sptr
+    nfc::make(double sample_rate)
     {
       return gnuradio::get_initial_sptr
-        (new modified_miller_decoder_impl(sample_rate));
+        (new nfc_impl(sample_rate));
     }
 
     /*
      * The private constructor
      */
-    modified_miller_decoder_impl::modified_miller_decoder_impl(double sample_rate)
-      : gr::block("modified_miller_decoder",
+    nfc_impl::nfc_impl(double sample_rate)
+      : gr::block("nfc_impl",
               gr::io_signature::make(1, 1, sizeof(char)),
               gr::io_signature::make(1, 1, sizeof(char))),
         d_sample_rate(sample_rate)
@@ -90,12 +89,12 @@ namespace gr {
     /*
      * Our virtual destructor.
      */
-    modified_miller_decoder_impl::~modified_miller_decoder_impl()
+    nfc_impl::~nfc_impl()
     {
     }
 
     void
-    modified_miller_decoder_impl::forecast (int noutput_items, gr_vector_int &ninput_items_required)
+    nfc_impl::forecast (int noutput_items, gr_vector_int &ninput_items_required)
     {
         ninput_items_required[0] = (noutput_items * 8 * d_sample_rate)/1000000;
     }
@@ -154,7 +153,7 @@ namespace gr {
     }
 
     int
-    modified_miller_decoder_impl::general_work (int noutput_items,
+    nfc_impl::general_work (int noutput_items,
                        gr_vector_int &ninput_items,
                        gr_vector_const_void_star &input_items,
                        gr_vector_void_star &output_items)
@@ -373,6 +372,7 @@ namespace gr {
         // Tell runtime system how many output items we produced.
         return decoded_bytes_num;
     }
-  } /* namespace nfc */
+
+  } /* namespace NFCByJcrona */
 } /* namespace gr */
 

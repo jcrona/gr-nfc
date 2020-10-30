@@ -19,16 +19,17 @@
 # The presence of this file turns this directory into a Python package
 
 '''
-This is the GNU Radio NFC module. Place your Python package
+This is the GNU Radio NFCBYJCRONA module. Place your Python package
 description here (python/__init__.py).
 '''
+from __future__ import unicode_literals
 
-# import swig generated symbols into the nfc namespace
+# import swig generated symbols into the NFCByJcrona namespace
 try:
-	# this might fail if the module is python-only
-	from nfc_swig import *
+    # this might fail if the module is python-only
+    from .NFCByJcrona_swig import *
 except ImportError:
-	pass
+    pass
 
 # import any pure python here
 #

@@ -1,0 +1,19 @@
+id: NFCByJcrona_nfc
+label: nfc
+category: '[Nfcbyjcrona]'
+templates:
+  imports: import NFCByJcrona
+  make: NFCByJcrona.nfc(${sample_rate})
+parameters:
+- id: sample_rate
+  label: Sample_rate
+  dtype: real
+inputs:
+- label: in
+  domain: stream
+  dtype: byte
+outputs:
+- label: out
+  domain: stream
+  dtype: byte
+file_format: 1

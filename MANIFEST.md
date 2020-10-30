@@ -1,16 +1,17 @@
-title: The NFC OOT Module
-brief: The gr-nfc package is a collection of blocks allowing to decode an NFC communication
+title: The NFCBYJCRONA OOT Module
+brief: Short description of gr-NFCByJcrona
 tags: # Tags are arbitrary, but look at CGRAN what other authors are using
-  - nfc
+  - sdr
 author:
-  - Jean-Christophe Rona <jc@rona.fr>
+  - Author Name <authors@email.address>
 copyright_owner:
-  - Copyright (C) 2017 Jean-Christophe Rona
+  - Copyright Owner 1
 license:
-repo: https://github.com/jcrona/gr-nfc.git
+gr_supported_version: # Put a comma separated list of supported GR versions here
+#repo: # Put the URL of the repository here, or leave blank for default
 #website: <module_website> # If you have a separate project website, put it here
 #icon: <icon_url> # Put a URL to a square image here that will be used as an icon on CGRAN
 ---
-The gr-nfc package is a collection of GNURadio blocks allowing to decode an NFC communication.
-It has been designed to work with an __rtl-sdr__ compatible dongle, but it should work with
-any kind of SDR.
+A longer, multi-line description of gr-NFCByJcrona.
+You may use some *basic* Markdown here.
+If left empty, it will try to find a README file instead.
