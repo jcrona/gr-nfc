@@ -25,7 +25,7 @@
 #include <gnuradio/io_signature.h>
 #include "modified_miller_decoder_impl.h"
 
-#define MILLER_PULSE_DURATION				2,5 // us
+#define MILLER_PULSE_DURATION				2.5 // us
 #define MILLER_PULSE_WIDTH				((d_sample_rate/1000000) * MILLER_PULSE_DURATION)
 #define MILLER_PULSE_WIDTH_MIN				(MILLER_PULSE_WIDTH - MILLER_PULSE_WIDTH/2)
 #define MILLER_PULSE_WIDTH_MAX				(MILLER_PULSE_WIDTH + MILLER_PULSE_WIDTH/2)
