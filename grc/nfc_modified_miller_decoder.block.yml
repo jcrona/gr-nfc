@@ -1,0 +1,19 @@
+id: nfc_modified_miller_decoder
+label: modified miller decoder
+category: '[Nfc]'
+templates:
+  imports: import gnuradio.nfc as nfc
+  make: nfc.modified_miller_decoder(${sample_rate})
+parameters:
+- id: sample_rate
+  label: Sample_rate
+  dtype: real
+inputs:
+- label: in
+  domain: stream
+  dtype: byte
+outputs:
+- label: out
+  domain: stream
+  dtype: byte
+file_format: 1
