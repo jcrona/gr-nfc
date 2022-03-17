@@ -21,7 +21,7 @@
 #ifndef INCLUDED_NFC_MODIFIED_MILLER_DECODER_IMPL_H
 #define INCLUDED_NFC_MODIFIED_MILLER_DECODER_IMPL_H
 
-#include <nfc/modified_miller_decoder.h>
+#include <gnuradio/nfc/modified_miller_decoder.h>
 
 namespace gr {
   namespace nfc {
